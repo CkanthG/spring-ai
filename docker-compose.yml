@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  ollama:
+    hostname: ollama
+    container_name: ollama
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    networks:
+      default:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - OLLAMA_HOST=ollama
+      - LLM_NAME=llama2
+    ports:
+      - "1111:1111"
+    depends_on:
+      - ollama
+    networks:
+      - default
+networks:
+  default:

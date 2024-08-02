@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spring-ai
+  api-docs:
+    path: /api-docs
+  ai:
+    ollama:
+      base-url: http://${OLLAMA_HOST:localhost}:11434/
+      model: ${LLM_NAME:llama2}
+server:
+  port: 1111
